@@ -5,7 +5,7 @@ The **Global Airport Route Optimizer** is a Python-based web application that al
 
 ## Features and How It Works
 
-- **Data Collection**: The app fetches airport data from the [AirportGap API](https://airportgap.com/api), which provides real-time airport information including latitude and longitude coordinates.
+- **Data Collection**: The app fetches airport data from the [AirportGap API](https://airportgap.com/), which provides real-time airport information including latitude and longitude coordinates.
 
 - **User Interface**: Built using **Streamlit**, the app allows users to select multiple airports from a global list using a user-friendly multiselect dropdown interface.
 
@@ -27,7 +27,7 @@ To run this project locally, follow these steps:
 
 ### Prerequisites
 
-Make sure you have Python 3.x installed. You'll also need **C++** for the algorithm computation.
+Make sure you have Python 3 installed.
 
 ### Steps
 
@@ -36,13 +36,14 @@ Make sure you have Python 3.x installed. You'll also need **C++** for the algori
    git clone https://github.com/EldarKusdavletov/Global-Aviation-Route-Optimizer.git
    cd Global-Aviation-Route-Optimizer
    ```
+2. Create virtual environment and install the required Python packages
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
 
-2. Install the required Python packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Compile the C++ code into a shared object (.so file):
+3. (OPTIONAL) Compile the C++ code into a shared object (.so file):
     ```bash
     g++ -shared -o main.so -fPIC main.cpp
     ```
@@ -56,4 +57,4 @@ Make sure you have Python 3.x installed. You'll also need **C++** for the algori
 Contributions are welcome! If you want to contribute to this project, please fork the repository, create a new branch, and submit a pull request with your changes.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/EldarKusdavletov/Global-Aviation-Route-Optimizer/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/EldarKusdavletov/Global-Aviation-Route-Optimizer?tab=MIT-1-ov-file) file for details.
