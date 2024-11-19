@@ -49,9 +49,15 @@ Make sure you have Python 3 installed.
     ```
 
 4. Run the Streamlit app:
+- To launch the app normally:
     ```bash
     streamlit run main.py
     ```
+- To refresh the airport data before launching the app, use the ```--refresh``` flag:
+    ```bash
+    streamlit run main.py -- --refresh
+    ```
+    This will download the latest airport data from the API and update the data/data.json file before the app starts.
 
 ## Contributions
 Contributions are welcome! If you want to contribute to this project, please fork the repository, create a new branch, and submit a pull request with your changes.

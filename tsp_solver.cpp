@@ -5,7 +5,10 @@
 #include <optional>
 #include <vector>
 
-std::vector<std::vector<double>> calculate_distance_matrix(const size_t size, const double *latitudes, const double *longitudes) {
+namespace tsp {
+
+// Function to calculate distance matrix using Haversine formula
+std::vector<std::vector<double>> calculate_distance_matrix(size_t size, const double *latitudes, const double *longitudes) {
     std::vector<std::vector<double>> distance_matrix(size, std::vector<double>(size, 0.0));
 
     auto haversine = [](double lat1, double lon1, double lat2, double lon2) {
@@ -28,7 +31,8 @@ std::vector<std::vector<double>> calculate_distance_matrix(const size_t size, co
     return distance_matrix;
 }
 
-double solve_tsp(const size_t size, const std::vector<std::vector<double>> &distance_matrix, size_t *path) {
+// Function to solve the TSP using dynamic programming (Held-Karp algorithm)
+double solve_tsp(size_t size, const std::vector<std::vector<double>> &distance_matrix, size_t *path) {
     uint64_t num_states = 1 << size;
     std::vector<std::vector<std::optional<double>>> dp(size, std::vector<std::optional<double>>(num_states));
 
@@ -73,12 +77,13 @@ double solve_tsp(const size_t size, const std::vector<std::vector<double>> &dist
     return *cost;
 }
 
-extern "C" double build_path(const size_t size, double *latitudes, double *longitudes) {
+// Expose a C-style function for use with Python ctypes
+extern "C" double build_path(size_t size, double *latitudes, double *longitudes) {
     std::vector<size_t> path(size);
-    std::vector<std::vector<double>> distance_matrix = calculate_distance_matrix(size, latitudes, longitudes);
+    auto distance_matrix = calculate_distance_matrix(size, latitudes, longitudes);
     double cost = solve_tsp(size, distance_matrix, path.data());
 
-    // Reorder latitudes and longitudes according to the path
+    // Reorder latitudes and longitudes based on path
     std::vector<double> new_latitudes(size), new_longitudes(size);
     for (size_t i = 0; i < size; ++i) {
         new_latitudes[i] = latitudes[path[i]];
@@ -91,3 +96,5 @@ extern "C" double build_path(const size_t size, double *latitudes, double *longi
 
     return cost;
 }
+
+}  // namespace tsp
