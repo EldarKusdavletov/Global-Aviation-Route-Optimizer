@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# IDE files
+.idea/
+.vscode/
+
+# Compiled libraries
+*.so
+*.dll
+
+# C++ formatting
+.clang-format
+
+# Git metadata
+.git/
+
+# OS files
+.DS_Store
+Thumbs.db
