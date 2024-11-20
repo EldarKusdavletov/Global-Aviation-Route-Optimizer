@@ -45,7 +45,7 @@ Make sure you have Python 3 installed.
 
 3. (OPTIONAL) Compile the C++ code into a shared object (.so file):
     ```bash
-    g++ -shared -o main.so -fPIC main.cpp
+    g++ -O2 -shared -fPIC -o main.so tsp_solver.cpp
     ```
 
 4. Run the Streamlit app:
