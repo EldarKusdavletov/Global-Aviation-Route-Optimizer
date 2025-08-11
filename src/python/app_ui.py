@@ -71,7 +71,7 @@ def build_shortest_path(latitudes, longitudes):
         logging.error("Windows OS detected, feature not implemented for Windows.")
         raise NotImplementedError("Not implemented for Windows")
     else:
-        lib = ctypes.CDLL("./main.so")
+        lib = ctypes.CDLL("src/cpp/main.so")
         logging.info("Loaded C++ shared library.")
 
     lib.build_path.restype = ctypes.c_double

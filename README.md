@@ -45,17 +45,17 @@ Make sure you have Python 3 installed.
 
 3. (OPTIONAL) Compile the C++ code into a shared object (.so file):
     ```bash
-    g++ -shared -o main.so -fPIC main.cpp
+    g++ -O2 -shared -fPIC -o src/cpp/main.so src/cpp/tsp_solver.cpp
     ```
 
 4. Run the Streamlit app:
 - To launch the app normally:
     ```bash
-    streamlit run main.py
+    streamlit run src/python/main.py
     ```
 - To refresh the airport data before launching the app, use the ```--refresh``` flag:
     ```bash
-    streamlit run main.py -- --refresh
+    streamlit run src/python/main.py -- --refresh
     ```
     This will download the latest airport data from the API and update the data/data.json file before the app starts.
 

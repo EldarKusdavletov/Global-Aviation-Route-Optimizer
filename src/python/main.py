@@ -16,7 +16,7 @@ def main(refresh: bool):
 
     if refresh and "refresh" not in st.session_state:
         logging.info("Refresh flag set. Refreshing airport data.")
-        refresh_airports_data("https://airportgap.com/api/airports", "data/data.json")
+        refresh_airports_data("https://airportgap.com/api/airports", "../../data/data.json")
         st.write("Airport data refreshed successfully!")
         st.session_state["refresh"] = False
 
